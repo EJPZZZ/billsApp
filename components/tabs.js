@@ -1,6 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
+import { FontAwesome } from '@expo/vector-icons';
+
 
 export default function Tabs() {
   return (
@@ -8,12 +10,15 @@ export default function Tabs() {
       <View style={styles.shadow}>
         <View style={styles.tabs}>
           <Link href="/incomes" style={styles.tab_link}>
+            <FontAwesome name="dollar" size={24} color="white" />
             Ingresos
           </Link>
-          <Link href="/auth/Login" style={styles.tab_link}>
+          <Link href="/auth/login" style={styles.tab_link}>
+            <FontAwesome name="home" size={24} color="white" />
             Home
           </Link>
           <Link href="/bills" style={styles.tab_link}>
+            <FontAwesome name="shopping-cart" size={24} color="white" />
             Gastos
           </Link>
         </View>
@@ -21,6 +26,7 @@ export default function Tabs() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -43,12 +49,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 30,
     justifyContent: "space-around",
-    backgroundColor: "#784aed",
+    backgroundColor: "#1C2A74",
   },
   tab_link: {
     color: "#ffffff",
-    fontWeight: "400",
-    fontSize: 14,
+    fontWeight: "700",
+    fontSize: 20,
     padding: 20,
   },
 });

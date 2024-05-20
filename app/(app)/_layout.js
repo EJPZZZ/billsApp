@@ -1,25 +1,28 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { Slot } from "expo-router";
-import Header from "../../components/Header";
-import Tabs from "../../components/Tabs";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Slot } from 'expo-router';
+import Tabs from '../../components/tabs';
+import Header from '../../components/header';
 
-export default function HomeLayout() {
+
+const Layout = () => {
   return (
     <>
       <View style={styles.container}>
-        <Header />
-        <Slot style={styles.main} />
+        <Header style={styles.header} />
+        <View style={styles.main}>
+          <Slot />
+        </View>
         <Tabs style={styles.tabs} />
       </View>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0d0d0d",
+    backgroundColor: "#EDEC3F",
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -28,3 +31,6 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
 });
+
+
+export default Layout;

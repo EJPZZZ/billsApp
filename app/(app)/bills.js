@@ -6,7 +6,7 @@ export default function Bills() {
     return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>This is bills page</Text>
+        <Text style={styles.title}>Esta es la pagina de Gastos</Text>
       </View>
     </View>
   );
