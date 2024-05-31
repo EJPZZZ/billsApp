@@ -1,82 +1,38 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, Alert, TextInput, Pressable } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+
+
 
 const incomes = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [incomeDescription, setIncomeDescription] = useState('');
-  const [incomeAmount, setIncomeAmount] = useState('');
-
-
-  const handleIncomeSubmit = () => {
-    // Validación de campos vacios
-    if (!incomeDescription || !incomeAmount) {
-      Alert.alert('Error', 'Por favor complete todos los campos');
-      return;
-    }
-    console.log('Descripción de ingreso:', incomeDescription);
-    console.log('Cantidad de ingreso:', incomeAmount);
-
-    // Limpia el formulario y cierra el modal
-    setIncomeDescription('');
-    setIncomeAmount('');
-    setModalVisible(false);
-  };
 
   return (
     <View style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        style={styles.main}>
 
-      <View style={styles.main}>
-      <Text style={styles.title}> Aqui podras ver tus ingresos </Text>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Registrar Ingreso</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Descripción"
-              value={incomeDescription}
-              onChangeText={text => setIncomeDescription(text)}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Cantidad"
-              keyboardType="numeric"
-              value={incomeAmount}
-              onChangeText={text => setIncomeAmount(text)}
-            />
-            <View style={styles.buttonContainer}>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={handleIncomeSubmit}>
-                <Text style={styles.textStyle}>Guardar</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Cancelar</Text>
-              </Pressable>
-            </View>
+        <View style={styles.item}>
+          <Image source={require('../../assets/iconIncomes.png')} style={styles.itemImage} />
+          <View style={styles.itemTextContainer}>
+            <Text style={styles.itemTitle}>Title</Text>
+            <Text style={styles.itemDescription}>Item description</Text>
+            <Text style={styles.itemDescription}>17-05-2024</Text>
+          </View>
+
+          <View style={styles.icons}>
+            <TouchableOpacity style={{marginBottom: 10,}}>
+              <FontAwesome5 name="edit" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AntDesign name="closecircle" size={24} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
-      </Modal>
 
-        <TouchableOpacity style={styles.fabLocation} 
-        onPress={() => setModalVisible(true)}>
-          <View style={styles.fab}>
-            <AntDesign name="plus" style={styles.fabIcon} />
-          </View>
-        </TouchableOpacity>
-
-
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -86,87 +42,44 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
+    marginTop: 75,
   },
   main: {
     flex: 1,
-    justifyContent: "center",
     maxWidth: 960,
-    marginHorizontal: "auto",
+    marginBottom: 50,
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
+
   subtitle: {
     fontSize: 36,
     color: "#38434D",
   },
-  fabLocation:{
-    position: "absolute",
-    bottom: 58,
-    right: 110,
-  },
-  fab: {
-    backgroundColor: "#0bb188",
-    width: 60,
-    height: 60,
-    borderRadius: 100,
-    justifyContent: "center",
-    alignContent: "center",
-  },
-  fabIcon: {
-    color: "white",
-    position: 'relative',
-    padding: 19,
-    fontSize: 22,
-
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  input: {
-    height: 40,
-    width: '100%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingHorizontal: 10,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  button: {
+  item: {
+    backgroundColor: '#fefefe',
+    padding: 20,
+    width: 310,
     borderRadius: 15,
-    padding: 10,
-    elevation: 2,
-    marginHorizontal: 5,
-  },
-  buttonClose: {
-    backgroundColor: '#0bb188',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
     marginBottom: 15,
-    textAlign: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  itemTitle: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  itemTextContainer: {
+    flex: 1,
+    justifyContent: "space-evenly",
+
+  },
+  itemImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  icons: {
+    marginHorizontal: 20,
+
   },
 });
 

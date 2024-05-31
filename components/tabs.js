@@ -1,25 +1,37 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-import { FontAwesome } from '@expo/vector-icons';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Tabs() {
   return (
     <View style={styles.container}>
       <View style={styles.shadow}>
         <View style={styles.tabs}>
+
           <Link href="/incomes" style={styles.tab_link}>
-            <FontAwesome name="dollar" size={24} color="white" />
-            Ingresos
+            <View style={styles.tabItem}>
+              <MaterialCommunityIcons name="account-cash" size={30} color="white" />
+              <Text style={styles.tabText}>Ingresos</Text>
+            </View>
           </Link>
-          <Link href="/auth/login" style={styles.tab_link}>
-            <FontAwesome name="home" size={24} color="white" />
-            Home
+          
+          <Link href="/home" style={styles.tab_link}>
+            <View>
+            <AntDesign name="close" size={35} color="white" />
+            <Text style={styles.tabText}></Text>
+            </View>
           </Link>
-          <Link href="/bills" style={styles.tab_link}>
-            <FontAwesome name="shopping-cart" size={24} color="white" />
-            Gastos
+          
+          <Link href="/expenses" style={styles.tab_link}>
+            <View style={styles.tabItem}>
+            <MaterialCommunityIcons name="cash-remove" size={35} color="white" />
+            <Text style={styles.tabText}>Gastos</Text>
+            </View>
           </Link>
         </View>
       </View>
@@ -27,34 +39,34 @@ export default function Tabs() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     zIndex: 2,
     width: "100%",
     justifyContent: "center",
-    paddingHorizontal: 25,
-    paddingVertical: 20,
-  },
-  shadow: {
-    // borderRadius: 30,
-    // shadowOffset: { width: 40, height: 40 },
-    // shadowColor: "#784aed",
-    // shadowOpacity: 1,
-    // elevation: 5,
-    // backgroundColor: "#0000",
-    // padding: 1,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   tabs: {
     flexDirection: "row",
-    borderRadius: 30,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
     justifyContent: "space-around",
-    backgroundColor: "#1C2A74",
+    backgroundColor: "#0F9B1D",
   },
   tab_link: {
     color: "#ffffff",
-    fontWeight: "700",
-    fontSize: 20,
+    fontWeight: "500",
+    fontSize: 14,
     padding: 20,
+  },
+  tabItem: {
+    alignItems: 'center',
+  },
+  tabText: {
+    marginTop: 0,
+    fontSize: 18,
+    color: "white",
+    
   },
 });

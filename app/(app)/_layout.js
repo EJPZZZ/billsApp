@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Slot } from 'expo-router';
 import Tabs from '../../components/tabs';
 import Header from '../../components/header';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const Layout = () => {
@@ -22,7 +23,7 @@ const Layout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EDEC3F",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "space-between",
   },
